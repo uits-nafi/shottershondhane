@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- icon link -->
+   <link rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    
+   <!-- home.css -->
+   <link rel="stylesheet" href="./css/home.css">
+   <link rel="stylesheet" href="./css/header.css">
+    <title>Shotter SHondhane</title>
+</head>
+<body>
+    <div class="container">
+        <!-- header -->
+        <%-include("./partials/header")%>
+    </div>
+    <!-- javscript code -->
+    <script src="../public/js/aclink.js"></script>
+    <script>
+        let currlink=window.location.pathname;
+let linkactive=document.querySelectorAll("ul li a").forEach((e)=>{
+  if(e.href.includes(currlink)){
+    e.classList.add("activelink")
+  }
+})
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- header css -->
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <title>Shotter Shondhane-Login</title>
+</head>
+<body>
+    <div class="login">
+          <!-- header -->
+          <%-include("./partials/header")%>
+          <div class="login-main">
+            <div class="login-box">
+                <h1>Log In</h1>
+                <form action="/login"method="POST"onsubmit="return fomsubmit()">
+                    <input type="email"placeholder="Enter Your Email"name="email"id="email"><br>
+                    <input type="number"placeholder="Enter Your Number"name="mobile"id="mobile"><br>
+                    <input type="number"placeholder="Enter Your Code"name="memberid"id="code"><br>
+                    <%if(typeof message !== "undefined"){%>
+                        <p><%=message%></p>
+                    <%}%>
+                    <p id="formtext"></p>
+                    <button>Log In</button>
+                </form>
+            </div>
+          </div>
+    </div>
+
+    <script>
+        let currlink=window.location.pathname;
+let linkactive=document.querySelectorAll("ul li a").forEach((e)=>{
+  if(e.href.includes(currlink)){
+    e.classList.add("activelink")
+  }
+});
+  let email=document.getElementById("email");
+  let code = document.getElementById("code");
+  let mobile = document.getElementById("mobile");
+  let formtext=document.getElementById("formtext")
+  function fomsubmit(){
+      if(email.value == "" || mobile.value == "" || code.value == "" ){
+          formtext.innerHTML="Please,fill the form correctly !";
+          return false
+      }else if(code.value.length >= 6){
+        formtext.innerHTML = "Member code length is very long!";
+        return false
+      } else if (code.value.length < 5) {
+        formtext.innerHTML = "Member code length is very small !";
+        return false
+      } else if (mobile.value.length < 11) {
+        formtext.innerHTML = "Mobile number should be 11 charachter !";
+        return false
+      }
+      else if (mobile.value.length >11) {
+        formtext.innerHTML = "Mobile number should be 11 charachter !";
+        return false
+      }
+  }
+
+    </script>
+</body>
+</html>
